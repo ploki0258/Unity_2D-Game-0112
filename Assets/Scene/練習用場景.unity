@@ -162,7 +162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &78684311
 Transform:
@@ -173,7 +173,7 @@ Transform:
   m_GameObject: {fileID: 78684309}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -3.15, y: 0, z: 0}
-  m_LocalScale: {x: 70, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1295042917}
   m_RootOrder: 2
@@ -381,7 +381,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &200062573
 Transform:
@@ -392,7 +392,7 @@ Transform:
   m_GameObject: {fileID: 200062571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 3.15, z: 0}
-  m_LocalScale: {x: 70, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1295042917}
   m_RootOrder: 0
@@ -496,7 +496,7 @@ MonoBehaviour:
   target: {fileID: 1828992246}
   speed: 1.5
   limitUD: {x: -1.7, y: 1.7}
-  limitLR: {x: -1.19, y: 1.19}
+  limitLR: {x: -0.5, y: 0.5}
 --- !u!1 &223938428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,6 +1236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 664770578}
   - component: {fileID: 664770579}
+  - component: {fileID: 664770580}
   m_Layer: 0
   m_Name: rock-monument
   m_TagString: Untagged
@@ -1307,6 +1308,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &664770580
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664770577}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.01, y: 0.9}
+    newSize: {x: 1.01, y: 0.9}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.01, y: 0.9}
+  m_EdgeRadius: 0
 --- !u!1 &995699455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,7 +1375,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &995699457
 Transform:
@@ -1359,7 +1386,7 @@ Transform:
   m_GameObject: {fileID: 995699455}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -3.15, z: 0}
-  m_LocalScale: {x: 70, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1295042917}
   m_RootOrder: 1
@@ -1748,7 +1775,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &1470135500
 Transform:
@@ -1759,7 +1786,7 @@ Transform:
   m_GameObject: {fileID: 1470135498}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 3.15, y: 0, z: 0}
-  m_LocalScale: {x: 70, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1295042917}
   m_RootOrder: 3
@@ -2651,12 +2678,12 @@ PrefabInstance:
     - target: {fileID: 316895172566254198, guid: 18988f7c746b8904a83bad1f696c74ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.15
+      value: 0.269
       objectReference: {fileID: 0}
     - target: {fileID: 316895172566254198, guid: 18988f7c746b8904a83bad1f696c74ee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13
+      value: -0.061
       objectReference: {fileID: 0}
     - target: {fileID: 316895172566254198, guid: 18988f7c746b8904a83bad1f696c74ee,
         type: 3}
