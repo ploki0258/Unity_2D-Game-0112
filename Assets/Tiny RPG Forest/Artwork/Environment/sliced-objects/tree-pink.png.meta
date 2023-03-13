@@ -23,6 +23,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -50,13 +52,16 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -98,16 +103,34 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline: []
-    physicsShape: []
+    outline:
+    - - {x: 9.5, y: -38}
+      - {x: -6.5, y: -39}
+      - {x: -29.5, y: -34}
+      - {x: -31.5, y: -22}
+      - {x: -25.5, y: -16}
+      - {x: -0.5, y: -11}
+      - {x: 26.5, y: -16}
+      - {x: 26.5, y: -27}
+      - {x: 19.5, y: -35}
+    physicsShape:
+    - - {x: -4.5, y: -39}
+      - {x: -27.5, y: -35}
+      - {x: -29.5, y: -23}
+      - {x: -21.5, y: -14}
+      - {x: 1.5, y: -11}
+      - {x: 24.5, y: -17}
+      - {x: 23.5, y: -30}
+      - {x: 16.5, y: -36}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

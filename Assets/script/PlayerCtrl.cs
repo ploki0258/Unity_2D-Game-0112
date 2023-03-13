@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
@@ -34,10 +32,16 @@ public class PlayerCtrl : MonoBehaviour
         // transform.Translate(move);  // 角色移動(需在乘上Time.deltaTime)
 
         // 角色動畫
-        /*
-        ani.SetBool("向上走", ws > 0);
-        ani.SetBool("向下走", ws < 0);
-        ani.SetBool("向右走", ad > 0);
-        */
+        if (move != Vector2.zero)
+        {
+            ani.SetBool("向上走", ws > 0);
+            ani.SetBool("向下走", ws < 0);
+            ani.SetBool("向右走", ad > 0);
+        }
+        // 翻轉
+        if (move.x < 0)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
     }
 }
