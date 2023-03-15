@@ -20,7 +20,7 @@ public class PlayerCtrl : MonoBehaviour
     }
 
     /// <summary>
-    /// 角色移動
+    /// 角色移動：動畫、翻轉
     /// </summary>
     private void Move()
     {
@@ -32,16 +32,20 @@ public class PlayerCtrl : MonoBehaviour
         // transform.Translate(move);  // 角色移動(需在乘上Time.deltaTime)
 
         // 角色動畫
+        /*
         if (move != Vector2.zero)
         {
             ani.SetBool("向上走", ws > 0);
             ani.SetBool("向下走", ws < 0);
             ani.SetBool("向右走", ad > 0);
         }
-        // 翻轉
+        */
+        //翻轉
+        /*
         if (move.x < 0)
         {
             transform.localScale = new Vector2(-1, 1);
         }
+        */
     }
 }
