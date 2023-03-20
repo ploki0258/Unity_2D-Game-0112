@@ -1,17 +1,33 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCtrl : MonoBehaviour
 {
+    // 在整個專案全域宣告一個instance(讓PlayerCtrl變成單例)
+    public static PlayerCtrl instance = null;
+
     [Header("移動速度")]
     [SerializeField] float speed = 1.5f;
+    [Header("最大血量")]
+    [SerializeField] float hpMax = 100;
+    [Header("血條")]
+    [SerializeField] Image hpBar = null;
+    [Header("血量數值")]
+    [SerializeField] Text hpText = null;
 
     private Rigidbody2D rig = null;
     private Animator ani = null;
 
     private void Awake()
     {
+        instance = this;    // 讓單例等於自己
         rig = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        hp = hpMax;
     }
 
     private void Update()
@@ -47,5 +63,29 @@ public class PlayerCtrl : MonoBehaviour
             transform.localScale = new Vector2(-1, 1);
         }
         */
+    }
+
+    /// <summary>
+    /// 血量控制
+    /// </summary>
+    float hp
+    {
+        get { return hpMax * hpBar.fillAmount; } // 讀取
+        set // 寫入
+        {
+            _hp = value;
+            hpBar.fillAmount = value / hpMax;   // 百分比
+            hpText.text = Mathf.Round(hp) + "/" + hpMax;
+        } 
+    }
+    float _hp = 0f;
+
+    /// <summary>
+    /// 傷害管理器
+    /// </summary>
+    /// <param name="hurt">所受的傷害量</param>
+    public void TakeDamage(float hurt)
+    {
+        hp -= hurt;
     }
 }
