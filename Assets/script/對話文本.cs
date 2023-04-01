@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 // ScriptableObject 自訂物件
 
-[CreateAssetMenu(fileName = "NewFile", menuName = "Create_New_File")]
+[CreateAssetMenu(fileName = "New File", menuName = "Create_New_File")]
 public class 對話文本 : ScriptableObject
 {
     // 表單

@@ -17,7 +17,7 @@ public class TalkButton : MonoBehaviour
         Button.SetActive(false);    //ÁôÂÃ«ö¶s
     }
 
-    private void Update()
+    public void hideUI()
     {
         if (Button.activeSelf && Input.GetKeyDown(KeyCode.E))
         {
@@ -25,7 +25,10 @@ public class TalkButton : MonoBehaviour
             //Debug.Log(objectName);
 
         }
+    }
 
-
+    private void Update()
+    {
+        hideUI();
     }
 }
