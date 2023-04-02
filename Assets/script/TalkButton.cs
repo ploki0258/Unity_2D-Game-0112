@@ -5,6 +5,7 @@ public class TalkButton : MonoBehaviour
     public GameObject Button;
     public GameObject talkUI;
     public string objectName;
+    [SerializeField] 對話文本 lines;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,5 +31,15 @@ public class TalkButton : MonoBehaviour
     private void Update()
     {
         hideUI();
+    }
+
+    public void E()
+    {
+        // 如果沒有在對話中
+        if (DialogSystem.instance.對話中 == false)
+        {
+            // 執行對話系統中的開始對話
+            DialogSystem.instance.開始對話(lines);
+        }
     }
 }

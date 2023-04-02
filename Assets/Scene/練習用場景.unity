@@ -2624,6 +2624,7 @@ MonoBehaviour:
     type: 2}
   Button: {fileID: 1760891339}
   talkUI: {fileID: 1260673264}
+  "\u5C0D\u8A71\u4E2D": 0
 --- !u!1 &1276222332
 GameObject:
   m_ObjectHideFlags: 0
@@ -3421,6 +3422,7 @@ MonoBehaviour:
   Button: {fileID: 1760891339}
   talkUI: {fileID: 1260673264}
   objectName: 
+  lines: {fileID: 11400000, guid: 49ad6f2e114b9664a86d4c5896531037, type: 2}
 --- !u!61 &1540805742
 BoxCollider2D:
   m_ObjectHideFlags: 0

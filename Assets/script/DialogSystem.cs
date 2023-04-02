@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialogSystem : MonoBehaviour
 {
-    // ()
+    // 暫定
     /*
     [Header("UI介面")]
     [SerializeField] Text textLabal = null;
@@ -25,9 +25,9 @@ public class DialogSystem : MonoBehaviour
     [SerializeField] GameObject talkUI;
 
     對話文本 當前文本;
-    bool 對話中 = false;
-    bool E = false;
-    bool wait = false;
+    public bool 對話中 = false;
+    bool pressE = false;
+    bool wait = false; // 是否在等待
 
     public static DialogSystem instance = null;
 
@@ -36,6 +36,7 @@ public class DialogSystem : MonoBehaviour
         instance = this;
     }
 
+    /*
     private void Start()
     {
         if (測試文本 != null)
@@ -43,6 +44,7 @@ public class DialogSystem : MonoBehaviour
             開始對話(測試文本);
         }
     }
+    */
 
     /// <summary>
     /// 開始對話
@@ -53,7 +55,7 @@ public class DialogSystem : MonoBehaviour
         // 如果正在對話就忽略此命令
         if (對話中 == true)
         {
-            Debug.Log("已經在對話了");
+            // Debug.Log("已經在對話了");
             return;
         }
         // 取得文本
@@ -115,12 +117,12 @@ public class DialogSystem : MonoBehaviour
             繼續提示.localScale = Vector3.one;
             //
             wait = true;
-            while (E == false)
+            while (pressE == false)
             {
                 yield return new WaitForSeconds(0.1f);
             }
             wait = false;
-            E = false;
+            pressE = false;
         }
         talkUI.SetActive(false);
         yield return new WaitForSeconds(0.5f);
@@ -137,6 +139,7 @@ public class DialogSystem : MonoBehaviour
         Button.SetActive(false);    //隱藏按鈕
     }
 
+    /*
     public void hideUI()
     {
         if (Button.activeSelf && Input.GetKeyDown(KeyCode.E))
@@ -144,14 +147,19 @@ public class DialogSystem : MonoBehaviour
             talkUI.SetActive(true); // 顯示對話介面
         }
     }
+    */
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) && wait)
+        if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && wait)
         {
-            E = true;
+            pressE = true;
         }
 
-        hideUI();
+        if (Button.activeSelf && Input.GetKeyDown(KeyCode.E))
+        {
+            // 叫對方執行E的事情
+            gameObject.SendMessage("E");
+        }
     }
 }
