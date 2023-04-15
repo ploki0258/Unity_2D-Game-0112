@@ -15,6 +15,8 @@ public class PlayerCtrl : MonoBehaviour
     [Header("血量數值")]
     [SerializeField] Text hpText = null;
 
+    [SerializeField] Slider 迢迢 = null; 
+
     private Rigidbody2D rig = null;
     private Animator ani = null;
 
@@ -76,6 +78,7 @@ public class PlayerCtrl : MonoBehaviour
             _hp = value;
             hpBar.fillAmount = value / hpMax;   // 百分比
             hpText.text = Mathf.Round(hp) + "/" + hpMax;
+            迢迢.value = value / hpMax;
         } 
     }
     float _hp = 0f;

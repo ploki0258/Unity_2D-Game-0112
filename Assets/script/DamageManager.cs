@@ -7,14 +7,40 @@ public class DamageManager : MonoBehaviour
     [Header("¶Ë®`¶q")]
     [SerializeField] float hurt = 10f;
 
-    private IEnumerator OnTriggerStay2D(Collider2D other)
+    /*private IEnumerator OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
             yield return new WaitForSeconds(0.5f);
             PlayerCtrl.instance.TakeDamage(hurt * Time.deltaTime);
         }
+    }*/
+
+    Collider2D tempTarget = null;
+    bool killPlayer = false;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        tempTarget = collision;
+        killPlayer = true;
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        tempTarget = null;
+        killPlayer = false;
+    }
+
+    private void Update()
+    {
+        if (killPlayer == true && tempTarget != null)
+        {
+            if (tempTarget.gameObject.tag == "Player")
+            {
+                PlayerCtrl.instance.TakeDamage(hurt * Time.deltaTime);
+            }
+        }
+    }
+
+
     /*
     IEnumerator MapDamage()
     {

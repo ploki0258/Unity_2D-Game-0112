@@ -22,7 +22,7 @@ public class DialogSystem : MonoBehaviour
     [SerializeField] Transform 繼續提示 = null;
     [SerializeField] 對話文本 測試文本 = null;
     [SerializeField] GameObject Button;
-    [SerializeField] GameObject talkUI;
+    [SerializeField] CanvasGroup talkUI;
 
     對話文本 當前文本;
     public bool 對話中 = false;
@@ -34,6 +34,7 @@ public class DialogSystem : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        talkUI.alpha = 0f;
     }
 
     /*
@@ -67,7 +68,7 @@ public class DialogSystem : MonoBehaviour
     IEnumerator 對話()
     {
         對話中 = true;
-        talkUI.SetActive(true);
+        talkUI.alpha = 1f;
         // 顯示正在對話的角色名稱
         // 對話人名.text = 當前文本.表[0].角色名稱;
         // 顯示正在對話的角色圖示
@@ -76,6 +77,10 @@ public class DialogSystem : MonoBehaviour
         // 條件 ? 成立做的事情 : 不成立做的事情
         角色圖示_左.sprite = 當前文本.表[0].左邊角色 ? 當前文本.表[0].角色圖示左 : null;
         角色圖示_右.sprite = 當前文本.表[0].左邊角色 ? null : 當前文本.表[0].角色圖示右;
+
+        角色圖示_左.transform.localScale = (角色圖示_左.sprite == null) ? Vector3.zero : Vector3.one;
+        角色圖示_右.transform.localScale = (角色圖示_右.sprite == null) ? Vector3.zero : Vector3.one;
+
         // 如果是左邊的人名 就顯示人名在左邊的文字方塊中 如果不是就填入空白
         對話人名_左.text = 當前文本.表[0].左邊角色 ? 當前文本.表[0].角色名稱 : "";
         對話人名_右.text = 當前文本.表[0].左邊角色 ? "" : 當前文本.表[0].角色名稱;
@@ -98,8 +103,13 @@ public class DialogSystem : MonoBehaviour
         for (int j = 0; j < 當前文本.表.Count; j++)
         {
             // 開始這句話之前設定好人名並且關閉提示
+
             角色圖示_左.sprite = 當前文本.表[j].左邊角色 ? 當前文本.表[j].角色圖示左 : null;
             角色圖示_右.sprite = 當前文本.表[j].左邊角色 ? null : 當前文本.表[j].角色圖示右;
+
+            角色圖示_左.transform.localScale = (角色圖示_左.sprite == null) ? Vector3.zero : Vector3.one;
+            角色圖示_右.transform.localScale = (角色圖示_右.sprite == null) ? Vector3.zero : Vector3.one;
+
             對話人名_左.text = 當前文本.表[j].左邊角色 ? 當前文本.表[j].角色名稱 : "";
             對話人名_右.text = 當前文本.表[j].左邊角色 ? "" : 當前文本.表[j].角色名稱;
             繼續提示.localScale = Vector3.zero;
@@ -124,42 +134,17 @@ public class DialogSystem : MonoBehaviour
             wait = false;
             pressE = false;
         }
-        talkUI.SetActive(false);
+        talkUI.alpha = 0f;
         yield return new WaitForSeconds(0.5f);
         對話中 = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Button.SetActive(true);     //顯示按鈕
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Button.SetActive(false);    //隱藏按鈕
-    }
-
-    /*
-    public void hideUI()
-    {
-        if (Button.activeSelf && Input.GetKeyDown(KeyCode.E))
-        {
-            talkUI.SetActive(true); // 顯示對話介面
-        }
-    }
-    */
-
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && wait)
+        if (wait == true && Input.GetKeyDown(KeyCode.E))
         {
             pressE = true;
         }
-
-        if (Button.activeSelf && Input.GetKeyDown(KeyCode.E))
-        {
-            // 叫對方執行E的事情
-            gameObject.SendMessage("E");
-        }
     }
+
 }
