@@ -26,8 +26,8 @@ public class DialogSystem : MonoBehaviour
 
     對話文本 當前文本;
     public bool 對話中 = false;
-    bool pressE = false;
-    bool wait = false; // 是否在等待
+    bool pressE = false;    // 按了E
+    bool wait = false;      // 是否在等待
 
     public static DialogSystem instance = null;
 
@@ -37,6 +37,7 @@ public class DialogSystem : MonoBehaviour
         talkUI.alpha = 0f;
     }
 
+    // 文本測試
     /*
     private void Start()
     {
@@ -72,18 +73,16 @@ public class DialogSystem : MonoBehaviour
         // 顯示正在對話的角色名稱
         // 對話人名.text = 當前文本.表[0].角色名稱;
         // 顯示正在對話的角色圖示
-        // 如果是左邊的角色 就顯示圖示角色左
-        // 如果是右邊的角色 就顯示圖示角色右
+        // 如果是左邊的角色 就顯示角色圖示左
+        // 如果是右邊的角色 就顯示角色圖示右
         // 條件 ? 成立做的事情 : 不成立做的事情
         角色圖示_左.sprite = 當前文本.表[0].左邊角色 ? 當前文本.表[0].角色圖示左 : null;
         角色圖示_右.sprite = 當前文本.表[0].左邊角色 ? null : 當前文本.表[0].角色圖示右;
 
+        // 角色圖示左.transform.localScale = 如果角色圖示左為 null 就隱藏 否則就顯示
+        // 角色圖示右.transform.localScale = 如果角色圖示右為 null 就隱藏 否則就顯示
         角色圖示_左.transform.localScale = (角色圖示_左.sprite == null) ? Vector3.zero : Vector3.one;
         角色圖示_右.transform.localScale = (角色圖示_右.sprite == null) ? Vector3.zero : Vector3.one;
-
-        // 如果是左邊的人名 就顯示人名在左邊的文字方塊中 如果不是就填入空白
-        對話人名_左.text = 當前文本.表[0].左邊角色 ? 當前文本.表[0].角色名稱 : "";
-        對話人名_右.text = 當前文本.表[0].左邊角色 ? "" : 當前文本.表[0].角色名稱;
         /*
         if (當前文本.表[0].左邊角色 == true)
         {
@@ -94,6 +93,10 @@ public class DialogSystem : MonoBehaviour
             角色圖示_右 = 當前文本.表[0].角色圖示右;
         }
         */
+
+        // 如果是左邊的人名 就顯示人名在左邊的文字方塊中 如果不是就填入空白
+        對話人名_左.text = 當前文本.表[0].左邊角色 ? 當前文本.表[0].角色名稱 : "";
+        對話人名_右.text = 當前文本.表[0].左邊角色 ? "" : 當前文本.表[0].角色名稱;
         對話內容.text = "";
         繼續提示.localScale = Vector3.zero;
         //等待0.5秒
@@ -141,7 +144,7 @@ public class DialogSystem : MonoBehaviour
 
     private void Update()
     {
-        if (wait == true && Input.GetKeyDown(KeyCode.E))
+        if (wait == true && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)))
         {
             pressE = true;
         }

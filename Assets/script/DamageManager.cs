@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamageManager : MonoBehaviour
 {
     [Header("¶Ë®`¶q")]
-    [SerializeField] float hurt = 10f;
+    [SerializeField] float hurt = 1f;
 
     /*private IEnumerator OnTriggerStay2D(Collider2D other)
     {

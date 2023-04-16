@@ -14,8 +14,10 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField] Image hpBar = null;
     [Header("血量數值")]
     [SerializeField] Text hpText = null;
+    [Header("時間文字介面")]
+    [SerializeField] Text textTime = null;
 
-    [SerializeField] Slider 迢迢 = null; 
+    [SerializeField] Slider 體力條 = null; 
 
     private Rigidbody2D rig = null;
     private Animator ani = null;
@@ -35,6 +37,7 @@ public class PlayerCtrl : MonoBehaviour
     private void Update()
     {
         Move();
+        Updatetime();
     }
 
     /// <summary>
@@ -78,7 +81,7 @@ public class PlayerCtrl : MonoBehaviour
             _hp = value;
             hpBar.fillAmount = value / hpMax;   // 百分比
             hpText.text = Mathf.Round(hp) + "/" + hpMax;
-            迢迢.value = value / hpMax;
+            體力條.value = value / hpMax;
         } 
     }
     float _hp = 0f;
@@ -90,5 +93,13 @@ public class PlayerCtrl : MonoBehaviour
     public void TakeDamage(float hurt)
     {
         hp -= hurt;
+    }
+
+    /// <summary>
+    /// 更新時間介面
+    /// </summary>
+    private void Updatetime()
+    {
+        textTime.text = "時間：" + Time.timeSinceLevelLoad.ToString("F2"); // 時間文字介面 = "時間：" + 載入場景時間(當下載入場景經過多少時間)
     }
 }
