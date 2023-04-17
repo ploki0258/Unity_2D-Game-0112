@@ -29,6 +29,7 @@ public class DialogSystem : MonoBehaviour
     bool pressE = false;    // 按了E
     bool wait = false;      // 是否在等待
 
+    // 將 DialogSystem 設定為單例模式
     public static DialogSystem instance = null;
 
     private void Awake()

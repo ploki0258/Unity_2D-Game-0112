@@ -17,8 +17,10 @@ public class PlayerCtrl : MonoBehaviour
     [Header("時間文字介面")]
     [SerializeField] Text textTime = null;
 
-    [SerializeField] Slider 體力條 = null; 
+    [SerializeField] Slider 體力條 = null;
 
+    Collider2D tempTarget = null;
+    bool startTimer = false;
     private Rigidbody2D rig = null;
     private Animator ani = null;
 
@@ -37,7 +39,7 @@ public class PlayerCtrl : MonoBehaviour
     private void Update()
     {
         Move();
-        Updatetime();
+        timer();
     }
 
     /// <summary>
@@ -82,7 +84,7 @@ public class PlayerCtrl : MonoBehaviour
             hpBar.fillAmount = value / hpMax;   // 百分比
             hpText.text = Mathf.Round(hp) + "/" + hpMax;
             體力條.value = value / hpMax;
-        } 
+        }
     }
     float _hp = 0f;
 
@@ -98,8 +100,29 @@ public class PlayerCtrl : MonoBehaviour
     /// <summary>
     /// 更新時間介面
     /// </summary>
-    private void Updatetime()
+    private void timer()
     {
-        textTime.text = "時間：" + Time.timeSinceLevelLoad.ToString("F2"); // 時間文字介面 = "時間：" + 載入場景時間(當下載入場景經過多少時間)
+        if (tempTarget != null && startTimer == true && hp != 0)
+        {
+            textTime.text = "時間：" + Time.time; // 時間文字介面 = "時間：" + 載入場景時間(當下載入場景經過多少時間)
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Floor")
+        {
+            tempTarget = collision;
+        }
+        startTimer = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Floor")
+        {
+            tempTarget = null;
+        }
+        startTimer = false;
     }
 }
