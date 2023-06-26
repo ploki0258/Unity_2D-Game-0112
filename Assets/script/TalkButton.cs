@@ -12,7 +12,7 @@ public class TalkButton : MonoBehaviour
         if (collision.tag == "Player")
         {
             Button.SetActive(true);     //顯示按鈕
-            objectName = collision.gameObject.name;
+            // objectName = collision.gameObject.name;
         }
     }
 
@@ -24,6 +24,9 @@ public class TalkButton : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 顯示即隱藏對話介面
+    /// </summary>
     public void HideUI()
     {
         if (Button.activeSelf && Input.GetKeyDown(KeyCode.E))
@@ -40,5 +43,4 @@ public class TalkButton : MonoBehaviour
     {
         HideUI();
     }
-
 }
