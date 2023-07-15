@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4649133846355967307}
   m_Layer: 0
   m_Name: ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
     type: 3}
-  m_Color: {r: 1, g: 0.5058824, b: 0.77908653, a: 1}
+  m_Color: {r: 157, g: 158, b: 115, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -26,8 +26,6 @@ public class Player : MonoBehaviour
     /// </summary>
     public void CorrectButtonOn()
     {
-
-
         if (switchOn == correctAnswer)
         {
             PopLoco.sprite = isPress;

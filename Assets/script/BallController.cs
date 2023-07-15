@@ -12,10 +12,12 @@ public class BallController : MonoBehaviour
 	private float random_Y;
 	[Tooltip("是否碰到牆")]
 	private bool hitWall = false;   // 是否碰到牆
+	Play play;
 
 	private void Awake()
 	{
 		rig2D = GetComponent<Rigidbody2D>();
+		play = GetComponent<Play>();
 	}
 
 	private void Start()
@@ -50,14 +52,19 @@ public class BallController : MonoBehaviour
 		}
 	}
 
+	private void OnMouseDown()
+	{
+		Debug.Log("按下");
+	}
+
 	/// <summary>
 	/// 球移動
 	/// </summary>
 	void BallMove()
 	{
 		direction = new Vector2(random_X, random_Y);
-		rig2D.velocity = direction * speed * Time.deltaTime;
-		// rig2D.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
+		// rig2D.velocity = direction * speed * Time.deltaTime;
+		rig2D.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
 		/*
 		if (hitWall)
 		{
